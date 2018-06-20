@@ -1,21 +1,34 @@
 #+TITLE: From 0 to Component Testing Hero
 #+AUTHOR: Donatas Petrauskas <donatasp@wix.com>
+#+DATE: <2018-06-21 Thu>
 
-* Part 0: WELCOME
 =git clone https://github.com/dop/internal-testkit-workshop=
+
 * Part I: HISTORY
 * It all started with a hackathon
-- Mobile hackathon
-- Video recording app
-- How to test?
+
+- How to test components?
 * State of the art @ Wix
-- karma/phantomjs component tests
-- jsdom tests
-- enzyme
+
+- component tests with phantomjs
+- jsdom
+- enzyme already used by inbox
 * Enzyme
+
+- Shallow
+- PropTypes does not fail tests
 - No React lifecycle
-- PropTypes does not fail test
+
+
+- In the end still need integration tests!
 * React Test Renderer
+
+- Full render
+- All lifecycle hooks
+
+
+- How to test component as unit?
+* Quick example
 #+BEGIN_SRC jsx
 import TestRenderer from 'react-test-renderer';
 
@@ -34,14 +47,18 @@ testRenderer.toJSON() =>
 }
 #+END_SRC
 * Part II: REACT TEST RENDERER
+
 https://reactjs.org/docs/test-renderer.html
-- Open file:src/react-test-renderer.spec.js
+
+Open file:src/react-test-renderer.spec.js
 * Snapshot testing
+
 - Fast to start
 - Very integrating in nature
 - Dubious long term maintenance value
 - Open file:src/snapshots.spec.js
 * But what about TDD?
+
 - Building components gradually
 - Assertions on parts of tree
 * Part III: TEST DRIVERS

@@ -9,7 +9,7 @@ class MyList extends PureComponent {
   }
 }
 
-describe('React Test Renderer', () => {
+describe.skip('React Test Renderer', () => {
   let items;
   let renderer;
 

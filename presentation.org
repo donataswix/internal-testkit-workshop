@@ -33,4 +33,15 @@ testRenderer.toJSON() =>
   children: [ 'Facebook' ]
 }
 #+END_SRC
-* Part II: React Test Renderer
+* Part II: REACT TEST RENDERER
+https://reactjs.org/docs/test-renderer.html
+- Open file:src/react-test-renderer.spec.js
+* Snapshot testing
+- Fast to start
+- Very integrating in nature
+- Dubious long term maintenance value
+- Open file:src/snapshots.spec.js
+* But what about TDD?
+- Building components gradually
+- Assertions on parts of tree
+* Part III: TEST DRIVERS

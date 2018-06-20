@@ -3,6 +3,12 @@ import ReactTestRenderer from 'react-test-renderer';
 
 class MyList extends PureComponent {
 
+  constructor(props) {
+    super(props);
+    this.state = {a: 1};
+    this.changeState = this.changeState.bind(this);
+  }
+
   componentDidMount() {
     this.input.focus();
   }
@@ -11,9 +17,15 @@ class MyList extends PureComponent {
     console.log('I am gone!');
   }
 
+  changeState() {
+    this.setState({a: this.state.a + 1});
+    console.log('state =', this.state);
+  }
+
   render () {
+    console.log('render!');
     return (
-      <div>
+      <div onClick={this.changeState}>
         <input ref={el => this.input = el}/>
         <ul>{this.props.items.map((item, i) => (<li key={i}>{item}</li>))}</ul>
       </div>
@@ -72,5 +84,10 @@ describe('React Test Renderer', () => {
 
   it('can start unmount cycle', () => {
     renderer.unmount();
+  });
+
+  it('changes state synchronously', () => {
+    renderer.toJSON().props.onClick();
+    // renderer.unstable_flushSync(() => renderer.toJSON().props.onClick());
   });
 });

@@ -1,0 +1,38 @@
+#+TITLE: From 0 to Component Testing Hero
+#+AUTHOR: Donatas Petrauskas <donatasp@wix.com>
+
+
+* Part 0: Welcome
+Clone this:
+
+* Part I: History
+* It all started with a hackathon
+- Mobile hackathon
+- Video recording app
+- How to test?
+* State of the art @ Wix
+- karma/phantomjs component tests
+- jsdom tests
+- enzyme
+* Enzyme
+- No React lifecycle
+- PropTypes does not fail test
+* React Test Renderer
+#+BEGIN_SRC jsx
+import TestRenderer from 'react-test-renderer';
+
+function Link(props) {
+  return <a href={props.page}>{props.children}</a>;
+}
+
+const testRenderer = TestRenderer.create(
+  <Link page="https://www.facebook.com/">Facebook</Link>
+);
+
+testRenderer.toJSON() =>
+{ type: 'a',
+  props: { href: 'https://www.facebook.com/' },
+  children: [ 'Facebook' ]
+}
+#+END_SRC
+* Part II: React Test Renderer

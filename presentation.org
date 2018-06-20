@@ -1,11 +1,9 @@
 #+TITLE: From 0 to Component Testing Hero
 #+AUTHOR: Donatas Petrauskas <donatasp@wix.com>
 
-
-* Part 0: Welcome
-Clone this:
-
-* Part I: History
+* Part 0: WELCOME
+=git clone https://github.com/dop/internal-testkit-workshop=
+* Part I: HISTORY
 * It all started with a hackathon
 - Mobile hackathon
 - Video recording app

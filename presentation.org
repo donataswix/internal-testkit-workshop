@@ -63,16 +63,32 @@ Open file:src/react-test-renderer.spec.js
 - Building components gradually
 - Assertions on parts of tree
 * Part III: TEST DRIVERS
+
 - Query
 - Encapsulate
 - Compose
 * Queries
+
 - Assert on parts of component
 - Filter / Find
 * Encapsulation
-- Drivers
-  - Component
-  - Container
-  - Screen
+
+- Get component
+#+BEGIN_SRC javascript
+drv.findByID('PROFILE_SCREEN.USER_PICTURE')
+drv.getProfilePicture();
+#+END_SRC
+
+- Perform action
+#+BEGIN_SRC javascript
+drv.findByID('PROFILE_SCREEN.USER_PICTURE').props.onPress();
+drv.tapProfilePicture();
+#+END_SRC
+
 * Nested (composable) drivers
+
 - Integration testing
+
+* Hands On
+
+=npm i clubs-testkit=

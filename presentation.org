@@ -2,9 +2,11 @@
 #+AUTHOR: Donatas Petrauskas <donatasp@wix.com>
 #+DATE: <2018-06-21 Thu>
 
-=$ git clone https://github.com/donataswix/internal-testkit-workshop=
-=$ cd internal-testkit-workshop/part-1=
-=$ npm install=
+#+BEGIN_EXAMPLE
+$ git clone https://github.com/donataswix/internal-testkit-workshop
+$ cd internal-testkit-workshop/part-1
+$ npm install
+#+END_EXAMPLE
 
 * Part I: HISTORY
 * It all started with a hackathon
@@ -78,12 +80,14 @@ Open file:part-1/src/react-test-renderer.spec.js
 - Get component
 #+BEGIN_SRC javascript
 drv.findByID('PROFILE_SCREEN.USER_PICTURE')
+// vs.
 drv.getProfilePicture();
 #+END_SRC
 
 - Perform action
 #+BEGIN_SRC javascript
 drv.findByID('PROFILE_SCREEN.USER_PICTURE').props.onPress();
+// vs.
 drv.tapProfilePicture();
 #+END_SRC
 
@@ -93,5 +97,7 @@ drv.tapProfilePicture();
 
 * Hands On
 
-=cd ../part-2=
-=npm install=
+#+BEGIN_EXAMPLE
+$ cd ../part-2
+$ npm install
+#+END_EXAMPLE

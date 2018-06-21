@@ -1,0 +1,35 @@
+{
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "extends": [
+    "./node_modules/a-wix-react-native-framework/eslintrc.js",
+    "plugin:import/errors"
+  ],
+  "plugins": [
+    "import"
+  ],
+  "rules": {
+    "prefer-arrow-callback": 0,
+    "react/prop-types": 0,
+    "no-console": ["error", {"allow": ["warn", "error"]}],
+    "max-params": 0,
+    "prefer-template": 0,
+    "react/jsx-no-bind": 0,
+    "no-duplicate-imports": 2,
+    "import/no-duplicates": 2,
+    "no-restricted-globals": [2, "navigator"],
+    "import/named": 0,
+    "import/no-unresolved": [2, {"commonjs": true, "amd": false}]
+  },
+  "globals": {
+    "engine": true,
+    "device": true,
+    "flushPromises": false,
+    "NEVER_RESOLVE": false
+  },
+  "settings": {
+    "import/resolver": "reactnative"
+  }
+}

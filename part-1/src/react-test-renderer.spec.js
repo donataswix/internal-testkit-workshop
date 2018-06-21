@@ -2,7 +2,8 @@ import React, {PureComponent} from 'react';
 import ReactTestRenderer from 'react-test-renderer';
 
 class MyList extends PureComponent {
-  render () {
+
+  render() {
     return (
       <ul>{this.props.items.map((item, i) => (<li key={i}>{item}</li>))}</ul>
     );
@@ -20,7 +21,7 @@ describe.skip('React Test Renderer', () => {
     );
   });
 
-  it('produces plain object representation of rendered compponent with toJSON() method', () => {
+  it('produces plain object representation of rendered component with toJSON() method', () => {
     expect('?').toEqual({
       type: 'ul',
       props: {},

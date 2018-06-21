@@ -50,14 +50,14 @@ testRenderer.toJSON() =>
 
 https://reactjs.org/docs/test-renderer.html
 
-Open file:src/react-test-renderer.spec.js
+Open file:part-1/src/react-test-renderer.spec.js
 * Snapshot testing
 
 - Fast to start
 - Very integrating in nature
 - Dubious long term maintenance value
 
-- Open file:src/snapshots.spec.js
+- Open file:part-1/src/snapshots.spec.js
 * But what about TDD?
 
 - Building components gradually

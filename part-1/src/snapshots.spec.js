@@ -14,12 +14,14 @@ class MyLinks extends PureComponent {
 
   render () {
     return (
-      <ul>{this.props.links.map(this.renderLink)}</ul>
+      <div>
+        <ul>{this.props.links.map(this.renderLink)}</ul>
+      </div>
     );
   }
 }
 
-describe.skip('Snapshot Testing', () => {
+describe('Snapshot Testing', () => {
   it('just works', () => {
     const links = [
       {url: 'https://github.com', text: 'Was a good place'},

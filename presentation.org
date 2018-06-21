@@ -3,7 +3,7 @@
 #+DATE: <2018-06-21 Thu>
 
 =$ git clone https://github.com/donataswix/internal-testkit-workshop=
-=$ cd internal-testkit-workshop==
+=$ cd internal-testkit-workshop/part-1=
 =$ npm install=
 
 * Part I: HISTORY
@@ -93,4 +93,5 @@ drv.tapProfilePicture();
 
 * Hands On
 
-=npm i clubs-testkit=
+=cd ../part-2=
+=npm install=

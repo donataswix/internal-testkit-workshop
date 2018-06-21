@@ -2,7 +2,9 @@
 #+AUTHOR: Donatas Petrauskas <donatasp@wix.com>
 #+DATE: <2018-06-21 Thu>
 
-=git clone https://github.com/dop/internal-testkit-workshop=
+=$ git clone https://github.com/donataswix/internal-testkit-workshop=
+=$ cd internal-testkit-workshop==
+=$ npm install=
 
 * Part I: HISTORY
 * It all started with a hackathon

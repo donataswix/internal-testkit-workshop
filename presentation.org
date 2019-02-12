@@ -33,7 +33,7 @@ $ npm install
 
 - How to test component as unit?
 * Quick example
-#+BEGIN_SRC jsx
+#+BEGIN_SRC js
 import TestRenderer from 'react-test-renderer';
 
 function Link(props) {

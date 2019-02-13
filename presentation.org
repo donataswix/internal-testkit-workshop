@@ -91,13 +91,15 @@ drv.findByID('PROFILE_SCREEN.USER_PICTURE').props.onPress();
 drv.tapProfilePicture();
 #+END_SRC
 
-* Nested (composable) drivers
+* Composition
 
+- Nested components
 - Integration testing
 
 * Hands On
 
-#+BEGIN_EXAMPLE
-$ cd ../part-2
-$ npm install
-#+END_EXAMPLE
+- Quiz App
+
+* The End
+
+- Discussion

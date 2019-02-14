@@ -21,7 +21,8 @@
     "react": "^16.8.1",
     "react-component-driver": "^0.6.0",
     "react-dom": "^16.8.1",
-    "react-test-renderer": "^16.4.1"
+    "react-test-renderer": "^16.4.1",
+    "why-did-you-update": "^1.0.6"
   },
   "jest": {
     "clearMocks": true

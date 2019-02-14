@@ -2,7 +2,6 @@ import {componentDriver} from 'react-component-driver';
 
 import {QuizApp, Answer, Quiz, Question} from './component';
 
-
 const answerDriver = componentDriver(Answer, {
   getText() {
     return this.getComponent().children[0];
@@ -40,33 +39,48 @@ function quizApp(quiz) {
     },
     getScore() {
       return this.getByID('quizapp.score').children.join('');
-    }
+    },
   })().withProps({quiz});
 }
 
-describe('Question', () => {
-  it('defaults to empty text', () => {
-    expect(Question().text).toEqual('');
+describe('QuizApp', () => {
+  it('should render first question', () => {
+    const question = Math.random().toString();
+    expect(quizApp(Quiz([Question(question)])).getQuestion()).toEqual(question);
   });
 
-  it('returns given text', () => {
-    expect(Question('Eh?').text).toEqual('Eh?');
+  it('should render answer choices', () => {
+    expect(quizApp(Quiz([Question('', ['a', 'b', 'c'])])).getAnswers()).toEqual(
+      ['a', 'b', 'c'],
+    );
   });
 
-  it('defaults to empty list of answers', () => {
-    expect(Question().answers).toEqual([]);
+  it('should advance to next question on "Next" click', () => {
+    const quiz = Quiz([Question('A'), Question('B')]);
+    expect(
+      quizApp(quiz)
+        .clickNext()
+        .getQuestion(),
+    ).toEqual('B');
   });
 
-  it('returns given answers', () => {
-    expect(Question('', [1, 2, 3]).answers).toEqual([1, 2, 3]);
+  it('should allow to choose an answer', () => {
+    const quiz = Quiz([Question('A', ['a', 'b'])]);
+    expect(
+      quizApp(quiz)
+        .selectAnswer(1)
+        .getSelectedAnswer(),
+    ).toEqual('b');
   });
 
-  it('defaults to first answer as correct', () => {
-    expect(Question('', [1, 2, 3]).correctAnswer).toEqual(1);
-  });
-
-  it('returns correct answer by given correct answer index', () => {
-    expect(Question('', [1, 2, 3], 1).correctAnswer).toEqual(2);
+  it('should report score when done', () => {
+    const quiz = Quiz([Question('A', ['a', 'b'], 1)]);
+    expect(
+      quizApp(quiz)
+        .selectAnswer(1)
+        .clickNext()
+        .getScore(),
+    ).toEqual('100%');
   });
 });
 
@@ -114,54 +128,60 @@ describe('Quiz', () => {
     });
 
     it('is 0 for quiz with incorrect answer', () => {
-      expect(Quiz([Question('A', ['a', 'b'])]).selectAnswer(1).getScore()).toEqual(0);
+      expect(
+        Quiz([Question('A', ['a', 'b'])])
+          .selectAnswer(1)
+          .getScore(),
+      ).toEqual(0);
     });
 
     it('is 100 for quiz with one question and correct answer', () => {
-      expect(Quiz([Question('A', ['a'])]).selectAnswer(0).getScore()).toEqual(100);
+      expect(
+        Quiz([Question('A', ['a'])])
+          .selectAnswer(0)
+          .getScore(),
+      ).toEqual(100);
     });
 
     it('is 50 for quiz with one correct and one incorrect answers', () => {
-      const quiz = Quiz([Question('A', ['a', 'b'], 0), Question('B', ['a', 'b'], 1)]);
-      expect(quiz.selectAnswer(0).advance().selectAnswer(0).advance().getScore()).toEqual(50);
+      const quiz = Quiz([
+        Question('A', ['a', 'b'], 0),
+        Question('B', ['a', 'b'], 1),
+      ]);
+      expect(
+        quiz
+          .selectAnswer(0)
+          .advance()
+          .selectAnswer(0)
+          .advance()
+          .getScore(),
+      ).toEqual(50);
     });
   });
 });
 
-describe('QuizApp', () => {
-  it('should render first question', () => {
-    const question = Math.random().toString();
-    expect(quizApp(Quiz([Question(question)])).getQuestion()).toEqual(question);
+describe('Question', () => {
+  it('defaults to empty text', () => {
+    expect(Question().text).toEqual('');
   });
 
-  it('should render answer choices', () => {
-    expect(quizApp(Quiz([Question('', ['a', 'b', 'c'])])).getAnswers()).toEqual(
-      ['a', 'b', 'c'],
-    );
+  it('returns given text', () => {
+    expect(Question('Eh?').text).toEqual('Eh?');
   });
 
-  it('should advance to next question on "Next" click', () => {
-    const quiz = Quiz([Question('A'), Question('B')]);
-    expect(
-      quizApp(quiz)
-        .clickNext()
-        .getQuestion(),
-    ).toEqual('B');
+  it('defaults to empty list of answers', () => {
+    expect(Question().answers).toEqual([]);
   });
 
-  it('should allow to choose an answer', () => {
-    const quiz = Quiz([Question('A', ['a', 'b'])]);
-    expect(
-      quizApp(quiz)
-        .selectAnswer(1)
-        .getSelectedAnswer(),
-    ).toEqual('b');
+  it('returns given answers', () => {
+    expect(Question('', [1, 2, 3]).answers).toEqual([1, 2, 3]);
   });
 
-  it('should report score when done', () => {
-    const quiz = Quiz([Question('A', ['a', 'b'], 1)]);
-    expect(
-      quizApp(quiz).selectAnswer(1).clickNext().getScore()
-    ).toEqual('100%');
+  it('defaults to first answer as correct', () => {
+    expect(Question('', [1, 2, 3]).correctAnswer).toEqual(1);
+  });
+
+  it('returns correct answer by given correct answer index', () => {
+    expect(Question('', [1, 2, 3], 1).correctAnswer).toEqual(2);
   });
 });

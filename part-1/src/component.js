@@ -65,9 +65,20 @@ export class QuizApp extends React.PureComponent {
   render() {
     const {quiz} = this.state;
     if (quiz.isDone()) {
-      return <div>Your score is <span data-test-id="quizapp.score">{quiz.getScore()}%</span></div>;
+      return (
+        <div>
+          Your score is{' '}
+          <span data-test-id="quizapp.score">{quiz.getScore()}%</span>
+        </div>
+      );
     } else {
-      return <QuizComponent quiz={this.state.quiz} onNext={this.next} onSelectAnswer={this.selectAnswer}/>;
+      return (
+        <QuizComponent
+          quiz={this.state.quiz}
+          onNext={this.next}
+          onSelectAnswer={this.selectAnswer}
+        />
+      );
     }
   }
 }

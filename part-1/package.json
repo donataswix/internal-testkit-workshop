@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "browserify -e src/app.js -o bundle.jsh -t [ babelify ] ] "
+    "build": "browserify -e src/app.js -o bundle.js -t [ babelify ]"
   },
   "keywords": [],
   "author": "Donatas Petrauskas <donatasp@wix.com>",

@@ -1,15 +1,18 @@
 import React from 'react';
 
-export function Answer({id, text, onSelect, isSelected}) {
-  return (
-    <li
-      className={isSelected ? 'is-selected' : undefined}
-      onClick={onSelect}
-      data-test-id={'quizapp.answer-' + id}
-    >
-      {text}
-    </li>
-  );
+export class Answer extends React.PureComponent {
+  render() {
+    const {id, text, onSelect, isSelected} = this.props;
+    return (
+      <li
+        className={isSelected ? 'is-selected' : undefined}
+        onClick={() => onSelect(id)}
+        data-test-id={'quizapp.answer-' + id}
+      >
+        {text}
+      </li>
+    );
+  }
 }
 
 export class QuizComponent extends React.PureComponent {
@@ -22,7 +25,7 @@ export class QuizComponent extends React.PureComponent {
           {quiz.getAnswers().map((answer, i) => (
             <Answer
               isSelected={answer === quiz.getSelectedAnswer()}
-              onSelect={() => this.props.onSelectAnswer(i)}
+              onSelect={this.props.onSelectAnswer}
               key={i}
               id={i}
               text={answer}
